@@ -25,6 +25,17 @@ logging:
 userservice:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+
+feign: #通过配置文件来自定义Feign的配置
+  client:
+    config:
+      default: #这里用default就是全局配置，如果写某个服务名称，则是针对某个微服务的配置
+        loggerLevel: NONE #日志级别
+  httpclient: #httpclient的配置
+    enabled: true
+    max-connections: 200 # 最大连接数
+    max-connections-per-route: 50 # 单个路径的最大连接数
+
 #eureka:
 #  client:
 #    service-url:
